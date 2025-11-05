@@ -1,7 +1,7 @@
 
 # Ignored Directories
 .venv/
-
+.idea/
 
 # Ignored Files
 .env
