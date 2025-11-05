@@ -9,5 +9,5 @@ class Parser:
 
     def parse(self):
         self.store.bulk_insert(self.collected)
-        self.store.query("system", 5)
+        print(self.store.query("system", 5))
         self.store.close()
