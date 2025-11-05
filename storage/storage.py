@@ -17,7 +17,7 @@ class Storage:
             service TEXT NOT NULL,
             level TEXT,
             source_file TEXT,
-            message TEXT NOT NULL,
+            message TEXT,
             client_ip TEXT,
             user TEXT,
             status_code INTEGER,
