@@ -32,6 +32,8 @@ class Storage:
 
     def insert_log(self, log_entry: dict):
         """Insert one parsed log entry into the database."""
+
+
         self.conn.execute("""
         INSERT INTO logs (timestamp, service, level, source_file, message, client_ip, user, status_code, metadata)
         VALUES (:timestamp, :service, :level, :source_file, :message, :client_ip, :user, :status_code, :metadata)
@@ -50,14 +52,29 @@ class Storage:
 
     def bulk_insert(self, logs: list[dict]):
         """Insert multiple log entries at once for efficiency."""
+        defaults = {
+            "timestamp": None,
+            "service": None,
+            "level": None,
+            "source_file": None,
+            "message": None,
+            "client_ip": None,
+            "user": None,
+            "status_code": None,
+            "metadata": "{}"
+        }
+
+        entry = {**defaults, **logs}
+        entry["metadata"] = json.dumps(entry.get("metadata", {}))
+
         self.conn.executemany("""
         INSERT INTO logs (timestamp, service, level, source_file, message, client_ip, user, status_code, metadata)
         VALUES (:timestamp, :service, :level, :source_file, :message, :client_ip, :user, :status_code, :metadata)
         """, [
             {
-                **log,
+                **entry,
                 "metadata": json.dumps(log.get("metadata", {}))
-            } for log in logs
+            } for log in entry
         ])
         self.conn.commit()
 
