@@ -64,18 +64,18 @@ class Storage:
             "metadata": "{}"
         }
 
-        entry = {**defaults, **logs}
-        entry["metadata"] = json.dumps(entry.get("metadata", {}))
+        prepared = []
+        for log in logs:
+            # merge defaults with each log entry
+            entry = {**defaults, **log}
+            entry["metadata"] = json.dumps(entry.get("metadata", {}))
+            prepared.append(entry)
 
         self.conn.executemany("""
-        INSERT INTO logs (timestamp, service, level, source_file, message, client_ip, user, status_code, metadata)
-        VALUES (:timestamp, :service, :level, :source_file, :message, :client_ip, :user, :status_code, :metadata)
-        """, [
-            {
-                **entry,
-                "metadata": json.dumps(log.get("metadata", {}))
-            } for log in entry
-        ])
+            INSERT INTO logs (timestamp, service, level, source_file, message, client_ip, user, status_code, metadata)
+            VALUES (:timestamp, :service, :level, :source_file, :message, :client_ip, :user, :status_code, :metadata)
+            """, prepared)
+
         self.conn.commit()
 
     def query(self, service=None, limit=10):
