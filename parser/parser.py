@@ -8,7 +8,4 @@ class Parser:
         self.parse()
 
     def parse(self):
-        self.store.bulk_insert(self.collected)
-        parsed = self.store.query("system", 5)
-        print(json.dumps(parsed, indent=4))
-        self.store.close()
+        return self.collected

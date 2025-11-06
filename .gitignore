@@ -3,5 +3,9 @@
 .venv/
 .idea/
 
+# Ignore Py Cache
+*.pyc
+__pycache__/
+
 # Ignored Files
 .env
