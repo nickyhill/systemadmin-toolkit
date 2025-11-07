@@ -13,5 +13,4 @@ CREATE TABLE IF NOT EXISTS logs (
             metadata JSON
 );
 
-CREATE INDEX IF NOT EXISTS idx_logs_service_time
-ON logs(service, timestamp);
+CREATE INDEX IF NOT EXISTS idx_logs_service_time ON logs(service, timestamp);

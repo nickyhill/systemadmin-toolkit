@@ -1,11 +1,18 @@
-
-# Ignored Directories
-.venv/
-.idea/
-
-# Ignore Py Cache
-*.pyc
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
 
-# Ignored Files
+# SQLite database file
+*.db
+
+# Environment variables file
 .env
+
+# IDE-specific directories
+.idea/
+.vscode/
+
+# Flask specific files
+instance/
+*.pyc

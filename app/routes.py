@@ -1,11 +1,8 @@
-from storage.storage import Storage
-from flask import Flask, jsonify, request
+from flask import jsonify, request
+from app import app, storage
 from app.log_pipeline import LogPipeline
 
-
-app = Flask(__name__)
-storage = Storage("logs.db")
-pipe = LogPipeline(storage)
+pipeline = LogPipeline(storage)
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
@@ -16,8 +13,7 @@ def get_logs():
 
 @app.route("/api/stats", methods=["GET"])
 def get_stats():
-    conn = storage.conn
-    stats = conn.execute("""
+    stats = storage.conn.execute("""
         SELECT service, COUNT(*) AS count
         FROM logs
         GROUP BY service
@@ -25,6 +21,7 @@ def get_stats():
     """).fetchall()
     return jsonify([dict(row) for row in stats])
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
-
+@app.route("/api/collect", methods=["POST"])
+def collect_logs():
+    pipeline.run_pipeline_once()
+    return jsonify({"status": "Logs collected"})
