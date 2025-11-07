@@ -24,4 +24,4 @@ async function loadLogs() {
 
 loadStats();
 loadLogs();
-setInterval(loadLogs, 5000);  // auto-refresh every 5s
+setInterval(loadLogs, 10000);  // auto-refresh every 5s

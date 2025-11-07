@@ -1,8 +1,15 @@
-from flask import jsonify, request
+from flask import jsonify, request, render_template
 from app import app, storage
 from app.log_pipeline import LogPipeline
 
 pipeline = LogPipeline(storage)
+
+@app.route('/')
+@app.route('/index')
+def index():
+    logs = get_logs()
+    # Render template with player data
+    return render_template('index.php', logs=logs)
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
