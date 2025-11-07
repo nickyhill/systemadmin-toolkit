@@ -27,7 +27,7 @@
         <tbody></tbody>
     </table>
 
- <script type="text/javascript" src="../scripts/load.js"></script>
+ <script type="text/javascript" src="scripts/load.js"></script>
 
 </body>
 </html>
