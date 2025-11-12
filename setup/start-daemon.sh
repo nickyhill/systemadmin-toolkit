@@ -5,7 +5,7 @@ SERVICE_NAME="logpipeline.service" # Replace with the actual service name
 echo "Attempting to start $SERVICE_NAME..."
 
 # Create SymLink
-sudo ln -s /var/www/sysadmin-toolkit/setup/logpipeline.service /etc/systemd/system/logpipeline.service
+sudo cp -f /var/www/sysadmin-toolkit/setup/logpipeline.service /etc/systemd/system
 
 sudo systemctl daemon-reload
 # Enable the service
