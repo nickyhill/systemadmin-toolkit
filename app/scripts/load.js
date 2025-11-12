@@ -9,7 +9,7 @@ async function loadStats() {
 }
 
 async function loadLogs() {
-    const res = await fetch("http://192.168.1.43:5000/api/logs?limit=20");
+    const res = await fetch("http://192.168.1.43:5000/api/logs?service=system&limit=20");
     const data = await res.json();
     const tbody = document.querySelector("#logTable tbody");
     tbody.innerHTML = "";

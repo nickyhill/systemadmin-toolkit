@@ -8,13 +8,14 @@ pipeline = LogPipeline(storage)
 @app.route('/index')
 def index():
     # Render template with player data
-    return render_template('index.php', logs=logs)
+    return render_template('index.php')
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
-    service = request.args.get("service")
-    limit = int(request.args.get("limit", 20))
+    service = str(request.args.get("service", default="system"))
+    limit = int(request.args.get("limit", default=20))
     logs = storage.query(service=service, limit=limit)
+    print("Length of the logs: ", len(logs))
     return jsonify(logs)
 
 @app.route("/api/stats", methods=["GET"])
