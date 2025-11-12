@@ -1,0 +1,14 @@
+[Unit]
+Description=System Admin Toolkit Log Collection Service
+After=network.target
+
+[Service]
+Type=simple
+User=sysadmin
+WorkingDirectory=/var/www/systemadmin-toolkit
+ExecStart=/usr/bin/python3 /var/www/systemadmin-toolkit/log_pipeline_service.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

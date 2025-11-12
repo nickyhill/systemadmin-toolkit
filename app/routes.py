@@ -7,7 +7,6 @@ pipeline = LogPipeline(storage)
 @app.route('/')
 @app.route('/index')
 def index():
-    logs = get_logs()
     # Render template with player data
     return render_template('index.php', logs=logs)
 
