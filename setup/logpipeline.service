@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-User=sysadmin
+User=vuser
 WorkingDirectory=/var/www/systemadmin-toolkit
-ExecStart=/usr/bin/python3 /var/www/systemadmin-toolkit/log_pipeline_service.py
+ExecStart=/var/www/systemadmin-toolkit/venv/bin/python3 /var/www/systemadmin-toolkit/setup/log_pipeline_service.py
 Restart=always
 RestartSec=5
 

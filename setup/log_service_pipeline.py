@@ -4,7 +4,7 @@ from app.log_pipeline import LogPipeline
 from storage.storage import Storage
 
 def main():
-    storage = Storage("logs.db", "data/schema.sql")
+    storage = Storage("logs.db", "storage/schema.sql")
     pipeline = LogPipeline(storage)
     interval = 60  # seconds between cycles
 

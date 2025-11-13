@@ -9,6 +9,8 @@ class Storage:
     def __init__(self, db_path="logs.db", path="schema.sql"):
         self.db_path = Path(db_path)
         self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
+        self.conn.execute("PRAGMA journal_mode=WAL;")
+        self.conn.execute("PRAGMA synchronous=NORMAL;")
         self.conn.row_factory = sqlite3.Row
         self._init_schema(path)
 
