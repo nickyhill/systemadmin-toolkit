@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=vuser
 WorkingDirectory=/var/www/systemadmin-toolkit
-ExecStart=/var/www/systemadmin-toolkit/venv/bin/python3 /var/www/systemadmin-toolkit/setup/log_pipeline_service.py
+ExecStart=/var/www/systemadmin-toolkit/venv/bin/python3 /var/www/systemadmin-toolkit/setup/log_service_pipeline.py
 Restart=always
 RestartSec=5
 Environment="PATH=/var/www/systemadmin-toolkit/venv/bin"
