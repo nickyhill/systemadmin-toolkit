@@ -14,6 +14,7 @@ def index():
 def get_logs():
     service = str(request.args.get("service", default="system"))
     limit = int(request.args.get("limit", default=20))
+    print("Routes DEBUG: ", service, limit)
     logs = storage.query(service=service, limit=limit)
     print("Length of the logs: ", len(logs))
     return jsonify(logs)
