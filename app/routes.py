@@ -7,8 +7,15 @@ pipeline = LogPipeline(storage)
 @app.route('/')
 @app.route('/index')
 def index():
-    # Render template with player data
-    return render_template('index.php')
+    logs = storage.query(limit=100)
+    stats = storage.conn.execute("""
+            SELECT service, COUNT(*) AS count
+            FROM logs
+            GROUP BY service
+            ORDER BY count DESC
+        """).fetchall()
+
+    return render_template('index.html', logs=logs, stats=stats)
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
