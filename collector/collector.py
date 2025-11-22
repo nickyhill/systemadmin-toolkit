@@ -25,5 +25,6 @@ class Collector:
                         "source_file": name,
                         "raw": line.strip()
                     }
+                    print(line.strip())
                     logs.append(entry)
         return logs

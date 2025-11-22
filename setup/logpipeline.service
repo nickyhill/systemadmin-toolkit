@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=vuser
+User=root
 WorkingDirectory=/var/www/systemadmin-toolkit
 Environment="PYTHONPATH=/var/www/systemadmin-toolkit"
 ExecStart=/var/www/systemadmin-toolkit/venv/bin/python3 /var/www/systemadmin-toolkit/setup/log_service_pipeline.py

@@ -32,7 +32,9 @@
         <thead>
             <tr>
                 <th>Timestamp</th>
+                <th>Raw</th>
                 <th>Service</th>
+                <th>Source File</th>
                 <th>Message</th>
             </tr>
         </thead>
@@ -42,7 +44,9 @@
                 {% for log in logs %}
                     <tr>
                         <td>{{ log.timestamp }}</td>
+                        <td>{{ log.raw }}</td>
                         <td>{{ log.service }}</td>
+                        <td>{{ log.source_file }}</td>
                         <td>{{ log.message }}</td>
                     </tr>
                 {% endfor %}
