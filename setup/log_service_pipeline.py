@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import time
 import logging
-from app.log_pipeline import LogPipeline
+from setup.log_pipeline import LogPipeline
 from storage.storage import Storage
 
 INTERVAL = 120 # seconds between cycles

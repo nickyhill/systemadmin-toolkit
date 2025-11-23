@@ -1,8 +1,16 @@
+import logging
 from flask import jsonify, request, render_template
-from app import app, storage
-from app.log_pipeline import LogPipeline
+from app import app
+from storage.storage import Storage
 
-pipeline = LogPipeline(storage)
+# initialize logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+logger.info("This message will go to stdout and be captured by journalctl.")
+logger.warning("A warning message captured by journalctl.")
+
+# initialized storage for db query by api
+storage = Storage("logs.db", "storage/schema.sql", logger=logger)
 
 @app.route('/')
 @app.route('/index')
