@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import datetime
 
 ## Collector Class that collects and parses logs
@@ -9,28 +10,40 @@ class Collector:
         self.system_dir = system_dir
         self.system_logs = ["syslog", "auth.log", "cron.log"]
         self.logger = logger
+        self.LOG_TS_REGEX = re.compile(r'^([A-Z][a-z]{2}\s+\d{1,2}\s+\d\d:\d\d:\d\d)')
 
     # Grabs logs definned in the constructor,
     # then formats and returns a list of dicts
     def collect(self) -> list[dict]:
         logs = []
         self.logger.info("Collecting logs...")
-        DEBUG_TIME = 5
         for name in self.system_logs:
             path = os.path.join(self.system_dir, name)
             if not os.path.exists(path):
                 continue
             with open(path, "r", encoding="utf-8", errors="ignore") as f:
                 for line in f:
-                    if DEBUG_TIME <= 0:
-                        self.logger.debug(line)
-                        DEBUG_TIME -= 1
                     entry = {
-                        "timestamp": datetime.utcnow().isoformat(),
+                        "timestamp": self.parse_timestamp(line),
+                         "message" : line.strip(),
                         "service": "system",
                         "source_file": name,
-                        "raw": line.strip()
+                        "raw": line
                     }
                     print(line.strip())
                     logs.append(entry)
         return logs
+
+
+
+    def parse_timestamp(self, line: str):
+        match = self.LOG_TS_REGEX.match(line)
+        if not match:
+            return None
+
+        ts_str = match.group(1)
+        # syslog timestamps have no year; add current year
+        current_year = datetime.now().year
+        ts_with_year = f"{ts_str} {current_year}"
+
+        return datetime.strptime(ts_with_year, "%b %d %H:%M:%S %Y")
