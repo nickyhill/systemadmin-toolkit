@@ -13,13 +13,13 @@ def main():
     logger.info("This message will go to stdout and be captured by journalctl.")
     logger.warning("A warning message captured by journalctl.")
 
-    storage = Storage("logs.db", "storage/schema.sql", logger)
+    storage = Storage("logs.db", "storage/schema.sql", logger=logger)
     pipeline = LogPipeline(storage)
     interval = INTERVAL
 
     while True:
         try:
-            pipeline.run_pipeline_once(logger)
+            pipeline.run_pipeline_once()
             print("Logs collected.")
         except Exception as e:
             print(f"Error collecting logs: {e}")
