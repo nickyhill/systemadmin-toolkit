@@ -6,15 +6,18 @@ from pathlib import Path
 class Storage:
     _lock = threading.Lock()
 
-    def __init__(self, db_path="logs.db", path="schema.sql"):
+    def __init__(self, db_path="logs.db", path="schema.sql", logger=None):
         self.db_path = Path(db_path)
         self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
         self.conn.execute("PRAGMA journal_mode=WAL;")
         self.conn.execute("PRAGMA synchronous=NORMAL;")
         self.conn.row_factory = sqlite3.Row
+        self.logger = logger
         self._init_schema(path)
 
+
     def _init_schema(self, path: str):
+        self.logger.info("Initializing schema")
         # Run schema.sql only if DB is new or missing tables
         tables = self.conn.execute(
             "SELECT name FROM sqlite_master WHERE type='table' AND name='logs';"
@@ -26,6 +29,7 @@ class Storage:
 
     def bulk_insert(self, logs: list[dict]):
         """Insert multiple log entries at once for efficiency."""
+        self.logger.info(f"Inserting {len(logs)} log entries")
         if not logs:
             print("Nothing to insert.")
             return
@@ -60,6 +64,7 @@ class Storage:
 
     def query(self, service=None, limit=10):
         """Retrieve recent logs, optionally filtered by service."""
+        self.logger.info(f"Querying {service} logs")
         with self._lock:
             if service:
                 rows = self.conn.execute(
@@ -74,4 +79,5 @@ class Storage:
             return [dict(row) for row in rows]
 
     def close(self):
+        self.logger.info("Closing connection")
         self.conn.close()

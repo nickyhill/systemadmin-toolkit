@@ -12,6 +12,8 @@ __pycache__/
 # IDE-specific directories
 .idea/
 .vscode/
+.venv/
+venv/
 
 # Flask specific files
 instance/
