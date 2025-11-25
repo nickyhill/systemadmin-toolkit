@@ -34,7 +34,7 @@ class Collector:
 
             with open(path, "r", encoding="utf-8", errors="ignore") as f:
                 for line in f:
-                    parsed = self.parse_line(line)
+                    parsed = self.parse_line(line, name)
                     if parsed:
                         logs.append(parsed)
                     else:
@@ -42,7 +42,7 @@ class Collector:
 
         return logs
 
-    def parse_line(self, line: str):
+    def parse_line(self, line: str, file: str):
         m = self.LOG_REGEX.match(line)
         if not m:
             return None
@@ -57,6 +57,6 @@ class Collector:
             "timestamp": timestamp.isoformat() if timestamp else None,
             "service": m.group("service"),
             "message": m.group("msg").strip(),
-            "source_file": None,
+            "source_file": file,
             "raw": line.strip(),
         }
