@@ -1,4 +1,4 @@
-from collector.collector import Collector
+from .collector import Collector
 import logging
 
 
