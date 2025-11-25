@@ -2,62 +2,69 @@
 <html>
 <head>
     <title>Linux Admin Toolkit Dashboard</title>
-    <style>
-        body { font-family: Arial; background-color: #f4f4f4; margin: 40px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; }
-        th { background-color: #ddd; }
-        ul { padding-left: 18px; }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 </head>
 <body>
 
     <h1>System Logs Dashboard</h1>
 
-    <!-- SUMMARY -->
-    <h3>Log Summary</h3>
-    {% if stats %}
-        <ul>
-            {% for row in stats %}
-                <li>{{ row.service }}: {{ row.count }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No statistics available.</p>
-    {% endif %}
+    <!-- LOG SUMMARY CARD -->
+    <div class="card">
+        <h3>Log Summary</h3>
 
-    <!-- RECENT LOGS TABLE -->
-    <h3>Recent Logs</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Timestamp</th>
-                <th>Raw</th>
-                <th>Service</th>
-                <th>Source File</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {% if logs %}
-                {% for log in logs %}
-                    <tr>
-                        <td>{{ log.timestamp }}</td>
-                        <td>{{ log.raw }}</td>
-                        <td>{{ log.service }}</td>
-                        <td>{{ log.source_file }}</td>
-                        <td>{{ log.message }}</td>
-                    </tr>
+        {% if stats %}
+            <ul>
+                {% for row in stats %}
+                    <li>{{ row.service }}: {{ row.count }}</li>
                 {% endfor %}
-            {% else %}
+            </ul>
+        {% else %}
+            <p>No statistics available.</p>
+        {% endif %}
+    </div>
+
+    <!-- RECENT LOGS CARD -->
+    <div class="card">
+        <h3>Recent Logs</h3>
+
+        <!-- FILTER BAR -->
+        <div class="filter-container">
+            <input type="text" id="filterInput" class="filter-input"
+                   placeholder="Filter logs (timestamp, raw, service, file, message)...">
+        </div>
+
+        <table id="logTable">
+            <thead>
                 <tr>
-                    <td colspan="3">No logs available.</td>
+                    <th data-col="timestamp">Timestamp</th>
+                    <th data-col="raw">Raw</th>
+                    <th data-col="service">Service</th>
+                    <th data-col="source_file">Source File</th>
+                    <th data-col="message">Message</th>
                 </tr>
-            {% endif %}
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+                {% if logs %}
+                    {% for log in logs %}
+                        <tr>
+                            <td>{{ log.timestamp }}</td>
+                            <td>{{ log.raw }}</td>
+                            <td>{{ log.service }}</td>
+                            <td>{{ log.source_file }}</td>
+                            <td>{{ log.message }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5">No logs available.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 
 </body>
 </html>
-
