@@ -1,8 +1,5 @@
-from .collector import Collector
 import logging
-
-
-
+from collector.collector import Collector
 
 if __name__ == '__main__':
     # initialize logging
