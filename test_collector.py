@@ -1,4 +1,5 @@
 import logging
+import json
 from collector.collector import Collector
 
 if __name__ == '__main__':
@@ -10,4 +11,5 @@ if __name__ == '__main__':
 
     collector = Collector(logger=logger)
     logs = collector.collect()
-    print(f"Collected {len(logs)}", logs[0:4])
+    print(f"Collected {len(logs)}")
+    print(json.dumps(logs[:10], indent=4))

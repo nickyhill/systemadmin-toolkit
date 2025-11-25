@@ -30,7 +30,6 @@ class Collector:
                         "source_file": name,
                         "raw": line
                     }
-                    print(line.strip())
                     logs.append(entry)
         return logs
 
