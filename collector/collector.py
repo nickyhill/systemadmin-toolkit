@@ -37,6 +37,8 @@ class Collector:
                     parsed = self.parse_line(line)
                     if parsed:
                         logs.append(parsed)
+                    else:
+                        continue
 
         return logs
 
@@ -52,7 +54,7 @@ class Collector:
             timestamp = None
 
         return {
-            "timestamp": timestamp,
+            "timestamp": timestamp.isoformat() if timestamp else None,
             "service": m.group("service"),
             "message": m.group("msg").strip(),
             "source_file": None,
