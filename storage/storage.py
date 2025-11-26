@@ -64,7 +64,7 @@ class Storage:
 
     def query(self, service=None, limit=10):
         """Retrieve recent logs, optionally filtered by service."""
-        self.logger.info(f"Querying {service} logs")
+        self.logger.info(f"Querying Service:{service} logs")
         with self._lock:
             if service:
                 rows = self.conn.execute(

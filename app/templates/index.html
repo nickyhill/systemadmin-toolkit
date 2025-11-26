@@ -37,7 +37,6 @@
             <thead>
                 <tr>
                     <th data-col="timestamp">Timestamp</th>
-                    <th data-col="raw">Raw</th>
                     <th data-col="service">Service</th>
                     <th data-col="source_file">Source File</th>
                     <th data-col="message">Message</th>
@@ -49,7 +48,6 @@
                     {% for log in logs %}
                         <tr>
                             <td>{{ log.timestamp }}</td>
-                            <td>{{ log.raw }}</td>
                             <td>{{ log.service }}</td>
                             <td>{{ log.source_file }}</td>
                             <td>{{ log.message }}</td>

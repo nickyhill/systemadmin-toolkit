@@ -15,11 +15,11 @@ storage = Storage("logs.db", "storage/schema.sql", logger=logger)
 @app.route('/')
 @app.route('/index')
 def index():
-    logs = storage.query(limit=100)
+    logs = storage.query(limit=1000)
     stats = storage.conn.execute("""
-            SELECT service, COUNT(*) AS count
+            SELECT source_file, COUNT(*) AS count
             FROM logs
-            GROUP BY service
+            GROUP BY source_file
             ORDER BY count DESC
         """).fetchall()
 
@@ -44,7 +44,3 @@ def get_stats():
     """).fetchall()
     return jsonify([dict(row) for row in stats])
 
-@app.route("/api/collect", methods=["POST"])
-def collect_logs():
-    pipeline.run_pipeline_once()
-    return jsonify({"status": "Logs collected"})
