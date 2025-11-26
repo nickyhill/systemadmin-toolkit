@@ -22,7 +22,7 @@ def index():
             GROUP BY source_file
             ORDER BY count DESC
         """).fetchall()
-
+    print(stats)
     return render_template('index.html', logs=logs, stats=stats)
 
 @app.route("/api/logs", methods=["GET"])

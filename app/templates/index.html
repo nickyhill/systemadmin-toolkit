@@ -15,7 +15,7 @@
         {% if stats %}
             <ul>
                 {% for row in stats %}
-                    <li>{{ row.service }}: {{ row.count }}</li>
+                    <li>{{ row.source_file }}: {{ row.count }}</li>
                 {% endfor %}
             </ul>
         {% else %}
