@@ -114,7 +114,7 @@ class Collector:
             }
 
         elif file in self.apache_logs:
-            print("Collection APACHE: BEGIN", file)
+            print("Collection APACHE: BEGIN", file, "\n\nTHE LOG:", line)
             m = self.LOG_REGEX_APACHE.match(line)
             if file == "error.log":
                 m = self.LOG_REGEX_APACHE_ERROR.match(line)
