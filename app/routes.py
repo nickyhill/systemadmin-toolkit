@@ -22,6 +22,7 @@ def index():
         GROUP BY service, source_file
         ORDER BY service, count DESC
     """).fetchall()
+    print(stats)
     return render_template('index.html', logs=logs, stats=stats)
 
 @app.route("/api/logs", methods=["GET"])

@@ -49,8 +49,6 @@ class Collector:
             re.VERBOSE,
         )
 
-
-
     def collect(self) -> list[dict]:
         logs = []
         if self.logger:
@@ -116,11 +114,16 @@ class Collector:
             }
 
         elif file in self.apache_logs:
+            print("Collection APACHE: BEGIN", file)
             m = self.LOG_REGEX_APACHE.match(line)
             if file == "error.log":
                 m = self.LOG_REGEX_APACHE_ERROR.match(line)
+
+
             if not m:
+                self.logger.info(f"Log file does not exist or there are no logs: {file}")
                 return None
+
 
             ts_str = m.group("ts")
             try:
@@ -137,5 +140,5 @@ class Collector:
                 "status_code": m.group("op"),
                 "raw": line.strip(),
             }
-        self.logger.error("Failed to parse and return logs")
+        self.logger.error("Failed to parse and return log")
         return None
