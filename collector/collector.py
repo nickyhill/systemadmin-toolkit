@@ -103,7 +103,7 @@ class Collector:
 
             return {
                 "timestamp": timestamp.isoformat() if timestamp else None,
-                "service": m.group("service"),
+                "service": "system",
                 "message": m.group("msg").strip(),
                 "source_file": file,
                 "raw": line.strip(),
@@ -126,6 +126,7 @@ class Collector:
                 "timestamp": timestamp.isoformat() if timestamp else None,
                 "client_ip": m.group("ip"),
                 "message": m.group("msg").strip(),
+                "service": "apache2",
                 "source_file": file,
                 "status_code": m.group("op"),
                 "raw": line.strip(),
