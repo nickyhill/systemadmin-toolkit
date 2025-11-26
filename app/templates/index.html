@@ -14,9 +14,15 @@
 
         {% if stats %}
             <ul>
-                {% for row in stats %}
-                    <li>{{ row.source_file }}: {{ row.count }}</li>
-                {% endfor %}
+            {% for service, files in stats.items() %}
+                <li><strong>{{ service }}</strong>
+                    <ul>
+                    {% for row in files %}
+                        <li>{{ row.source_file }}: {{ row.count }}</li>
+                    {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
             </ul>
         {% else %}
             <p>No statistics available.</p>

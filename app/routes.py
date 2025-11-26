@@ -15,14 +15,13 @@ storage = Storage("logs.db", "storage/schema.sql", logger=logger)
 @app.route('/')
 @app.route('/index')
 def index():
-    logs = storage.query(limit=1000)
+    logs = storage.query(limit=-1)
     stats = storage.conn.execute("""
-            SELECT source_file, COUNT(*) AS count
-            FROM logs
-            GROUP BY source_file
-            ORDER BY count DESC
-        """).fetchall()
-    print(stats)
+        SELECT service, source_file, COUNT(*) AS count
+        FROM logs
+        GROUP BY service, source_file
+        ORDER BY service, count DESC
+    """).fetchall()
     return render_template('index.html', logs=logs, stats=stats)
 
 @app.route("/api/logs", methods=["GET"])
