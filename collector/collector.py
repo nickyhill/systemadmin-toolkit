@@ -16,7 +16,7 @@ class Collector:
             r"""^
             (?P<ts>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))\s+
             (?P<host>\S+)\s+
-            (?P<service>\w+):\s+
+            (?P<level>\w+):\s+
             (?P<msg>.*)
             """,
             re.VERBOSE,
@@ -104,6 +104,7 @@ class Collector:
             return {
                 "timestamp": timestamp.isoformat() if timestamp else None,
                 "service": "system",
+                "level" : m.group("level"),
                 "message": m.group("msg").strip(),
                 "source_file": file,
                 "raw": line.strip(),
