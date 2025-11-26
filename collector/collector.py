@@ -54,7 +54,7 @@ class Collector:
     def collect(self) -> list[dict]:
         logs = []
         if self.logger:
-            self.logger.info("Collecting logs...")
+            self.logger.info("Beginning to collect System logs...")
 
         # Parse system logs
         for name in self.system_logs:
@@ -70,9 +70,12 @@ class Collector:
                         logs.append(parsed)
                     else:
                         continue
+        count_logs = len(logs)
+        self.logger.info(f"Finished collecting System logs... : {len(logs)}")
 
         # Parse apache logs
         for name in self.apache_logs:
+            self.logger.info("Beginning to collect Apache logs...")
             path = os.path.join(self.apache_dir, name)
             if not os.path.exists(path):
                 self.logger.info(f"Log file does not exist: {path}")
@@ -85,6 +88,8 @@ class Collector:
                         logs.append(parsed)
                     else:
                         continue
+
+        self.logger.info(f"Finished collecting apache logs... : {count_logs - len(logs)}")
 
         return logs
 
