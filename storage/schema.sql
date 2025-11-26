@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS logs (
             timestamp TEXT NOT NULL,
             service TEXT NOT NULL,
             level TEXT,
-            source_file TEXT,..
+            source_file TEXT,
             message TEXT,
             client_ip TEXT,
             user TEXT,
