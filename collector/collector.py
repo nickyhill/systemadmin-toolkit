@@ -37,15 +37,11 @@ class Collector:
         )
 
         self.LOG_REGEX_APACHE_ERROR = re.compile(
-            r"""
-            ^\[
-            (?P<ts>[^]]+)
-            \]\s+
-            \[[^\]]*\]\s+
-            \[[^\]]*\]\s+
-            \[client\s+(?P<ip>\d{1,3}(?:\.\d{1,3}){3})\]\s+
-            (?P<msg>.*)
-            $""",
+            r"""^(?P<ts>\[(.+?)\])\s
+            (?P<error>\[(.+?)\])\s
+            (?P<pid>\[pid\s(\d+):tid\s(\d+)\])\s
+            (?P<ip>\[client\s([\d\.]+)\])
+            (?P<msg>\s(.+))$""",
             re.VERBOSE,
         )
 
@@ -136,8 +132,9 @@ class Collector:
                 "client_ip": m.group("ip"),
                 "message": m.group("msg").strip(),
                 "service": "apache2",
+                "level" : m.group("error"),
                 "source_file": file,
-                "status_code": m.group("op"),
+                "status_code": m.group("op") if m.group("op") else None,
                 "raw": line.strip(),
             }
         self.logger.error("Failed to parse and return log")
