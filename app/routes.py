@@ -27,6 +27,7 @@ def index():
 
 @app.route('/logs')
 def dis_logs():
+    storage.conn.row_factory = lambda cursor, row: {col[0]: row[idx] for idx, col in enumerate(cursor.description)}
     logs = storage.query()
     stats = storage.conn.execute("""
             SELECT service, source_file, COUNT(*) AS count
@@ -34,7 +35,7 @@ def dis_logs():
             GROUP BY service, source_file
             ORDER BY service, count DESC
         """).fetchall()
-    print(stats)
+    print()
     return render_template('index.html', logs=logs, stats=stats)
 
 @app.route("/api/logs", methods=["GET"])
