@@ -1,4 +1,5 @@
 import logging
+from collections import defaultdict
 from flask import jsonify, request, render_template
 from app import app
 from storage.storage import Storage
@@ -33,8 +34,12 @@ def dis_logs():
             GROUP BY service, source_file
             ORDER BY service, count DESC
         """).fetchall()
-    print(stats)
-    return render_template('index.html', logs=logs, stats=stats)
+    nested_stats = defaultdict(list)
+    for row in stats:
+        nested_stats[row["service"]].append(row)
+
+    print(nested_stats)
+    return render_template('index.html', logs=logs, stats=nested_stats)
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
