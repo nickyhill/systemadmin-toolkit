@@ -1,12 +1,12 @@
 import pandas as pd
 import re
 import numpy as np
-from logai.preprocess.preprocessor import Preprocessor, PreprocessorConfig
-from logai.information_extraction.log_vectorizer import LogVectorizer, VectorizerConfig
-from logai.information_extraction.categorical_encoder import CategoricalEncoder, CategoricalEncoderConfig
-from logai.information_extraction.feature_extractor import FeatureExtractor, FeatureExtractorConfig
-from logai.analysis.anomaly_detector import AnomalyDetector, AnomalyDetectionConfig
-from logai.algorithms.anomaly_detection_algo.one_class_svm import OneClassSVMParams
+from anomaly.logai.preprocess.preprocessor import Preprocessor, PreprocessorConfig
+from anomaly.logai.information_extraction.log_vectorizer import LogVectorizer, VectorizerConfig
+from anomaly.logai.information_extraction.categorical_encoder import CategoricalEncoder, CategoricalEncoderConfig
+from anomaly.logai.information_extraction.feature_extractor import FeatureExtractor, FeatureExtractorConfig
+from anomaly.logai.analysis.anomaly_detector import AnomalyDetector, AnomalyDetectionConfig
+from anomaly.logai.algorithms.anomaly_detection_algo.one_class_svm import OneClassSVMParams
 
 def run_anomaly_pipeline():
     # 1 Load log data
