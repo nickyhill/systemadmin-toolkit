@@ -1,0 +1,15 @@
+{
+  "log_type": "log",
+  "dimensions": {
+    "timestamp": ["Time"],
+    "body": ["Message"],
+    "attributes": ["Level"]
+  },
+  "infer_datetime": true,
+  "datetime_format": "%a %b %d %H:%M:%S %Y",
+  "reader_args": {
+    "log_format": "[<Time>] [<Level>] <Message>"
+  }
+}
+
+

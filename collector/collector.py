@@ -25,23 +25,19 @@ class Collector:
         ## access.log and error.log regex format
         # Matches: timestamp, hostname, service, message
         self.LOG_REGEX_APACHE = re.compile(
-            r"""
-            ^(?P<ip>\d{1,3}(?:\.\d{1,3}){3})       # IPv4
-            \s+.*?\[                               # skip dashes/ident fields until date
-            (?P<ts>[^\]]+)                       # date/time inside brackets
-            \]\s+
-            (?P<op>GET|POST|PUT|DELETE|HEAD|PATCH|OPTIONS)\s+
-            (?P<msg>.*)$                           # rest of the message
-            """,
+            r"""^(?P<ip>\S+)\s
+                        \[(?P<ts>[^\]]+)\]\s
+                        "(?P<method>\S+)\s
+                        (?P<msg>.+)"$""",
             re.VERBOSE,
         )
 
         self.LOG_REGEX_APACHE_ERROR = re.compile(
-            r"""^(?P<ts>\[(.+?)\])\s
-            (?P<error>\[(.+?)\])\s
-            (?P<pid>\[pid\s(\d+):tid\s(\d+)\])\s
-            (?P<ip>\[client\s([\d\.]+)\])
-            (?P<msg>\s(.+))$""",
+            r"""^(?P<ts>\[[^\]]+\])\s
+                        (?P<error>\[[^\]]+\])
+                        (?:\s+(?P<pid>\[pid\s\d+(?::tid\s\d+)?\]))?
+                        \s(?P<ip>\[client\s[\d\.]+\])
+                        \s(?P<msg>.+)$""",
             re.VERBOSE,
         )
 

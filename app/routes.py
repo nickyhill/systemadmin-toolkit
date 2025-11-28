@@ -2,6 +2,7 @@ import logging
 from flask import jsonify, request, render_template
 from app import app
 from storage.storage import Storage
+from anomaly.anomaly_pipline import run_anomaly_pipeline
 
 # initialize logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -15,13 +16,22 @@ storage = Storage("logs.db", "storage/schema.sql", logger=logger)
 @app.route('/')
 @app.route('/index')
 def index():
-    logs = storage.query(limit=-1)
+    anomalies = None
+    if request.method == "POST":
+        # Run pipeline on button click
+        anomalies_df = run_anomaly_pipeline()
+        anomalies = anomalies_df[anomalies_df["anomaly"] == True].to_dict(orient="records")
+    return render_template("dashboard.html", anomalies=anomalies)
+
+@app.route('/logs')
+def logs():
+    logs = storage.query()
     stats = storage.conn.execute("""
-        SELECT service, source_file, COUNT(*) AS count
-        FROM logs
-        GROUP BY service, source_file
-        ORDER BY service, count DESC
-    """).fetchall()
+            SELECT service, source_file, COUNT(*) AS count
+            FROM logs
+            GROUP BY service, source_file
+            ORDER BY service, count DESC
+        """).fetchall()
     print(stats)
     return render_template('index.html', logs=logs, stats=stats)
 

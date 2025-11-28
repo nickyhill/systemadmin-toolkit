@@ -1,0 +1,16 @@
+LogAI License & Attribution
+
+This application uses the LogAI library (https://github.com/salesforce/logai).
+All rights to the LogAI software remain with the original authors.
+
+This software is intended for educational purposes only.
+It demonstrates the use of LogAI for anomaly detection in log files.
+No commercial use of LogAI or its derivatives is intended or authorized by this project.
+
+Credits:
+- LogAI Authors: https://github.com/logpai/logai
+- Original LogAI License: [See LogAI repository for full license details]
+
+Educational Use Disclaimer:
+This application is not intended for production or commercial deployments.
+All anomaly detection results are for demonstration and learning purposes only.

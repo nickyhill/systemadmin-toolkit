@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log Anomaly Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <div class="card">
+        <h1>Log Anomaly Detection Dashboard</h1>
+        <form method="POST">
+            <button type="submit">Run Pipeline</button>
+        </form>
+    </div>
+
+    {% if anomalies %}
+    <div class="card">
+        <h3>Anomalies Detected ({{ anomalies|length }})</h3>
+
+        <div class="filter-container">
+            <input class="filter-input" id="filterInput" type="text" placeholder="Filter by message template...">
+        </div>
+
+        <table id="anomalyTable">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Level</th>
+                    <th>Template</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in anomalies %}
+                <tr>
+                    <td>{{ a.timestamp }}</td>
+                    <td>{{ a.Level }}</td>
+                    <td>{{ a.log_template }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <script>
+        // Simple filter for table
+        const filterInput = document.getElementById('filterInput');
+        filterInput.addEventListener('keyup', function() {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#anomalyTable tbody tr');
+            rows.forEach(row => {
+                const text = row.cells[2].textContent.toLowerCase();
+                row.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
