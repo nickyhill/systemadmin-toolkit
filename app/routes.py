@@ -14,7 +14,7 @@ logger.warning("A warning message captured by journalctl.")
 storage = Storage("logs.db", "storage/schema.sql", logger=logger)
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
     anomalies = None
     if request.method == "POST":

@@ -10,8 +10,8 @@ import pandas as pd
 from attr import dataclass
 from sklearn.preprocessing import OrdinalEncoder
 
-from logai.algorithms.algo_interfaces import CategoricalEncodingAlgo
-from logai.config_interfaces import Config
+from anomaly.logai.algorithms.algo_interfaces import CategoricalEncodingAlgo
+from anomaly.logai.config_interfaces import Config
 
 
 @dataclass

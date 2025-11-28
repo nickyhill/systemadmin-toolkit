@@ -9,8 +9,8 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 
-from logai.algorithms.algo_interfaces import CategoricalEncodingAlgo
-from logai.config_interfaces import Config
+from anomaly.logai.algorithms.algo_interfaces import CategoricalEncodingAlgo
+from anomaly.logai.config_interfaces import Config
 
 
 class OneHotEncodingParams(Config):

@@ -8,7 +8,7 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-from logai.algorithms.algo_interfaces import CategoricalEncodingAlgo
+from anomaly.logai.algorithms.algo_interfaces import CategoricalEncodingAlgo
 
 
 class LabelEncoding(CategoricalEncodingAlgo):
