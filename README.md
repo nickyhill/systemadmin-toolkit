@@ -51,10 +51,10 @@ venv\Scripts\activate     # Windows
 # Install dependencies
 pip install -r requirements.txt
 ```
-
-- Run set up script 
+- Link the Service to system
+```sudo ln -s /var/www/sysadmin-toolkit/setup/logpipeline.service /etc/systemd/system/logpipeline.service```
+- Run set up script
 ```sudo . setup/start-daemon.sh```
-    - This will create a symlink with the Service in setup to /etc/systemd/system/ and will activate start the logpipeline service
     - Enable the Service 
     - Start the Service
     - Checks Service status
