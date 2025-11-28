@@ -59,6 +59,11 @@ pip install -r requirements.txt
     - Start the Service
     - Checks Service status
 
+- To run Flask App make sure you are in the activated venv then run
+```python3 run.py```
+
+**N.B. The flask application is set in DEBUG mode. Not meant for production!**
+
 ### Anomaly Pipeline Steps 🚦
 1. Load log data 
 2. Preprocess logs (Logai preprocessor)
