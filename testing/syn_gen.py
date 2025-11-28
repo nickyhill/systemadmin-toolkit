@@ -3,6 +3,12 @@ import sys
 import pandas as pd
 from datetime import datetime, timedelta
 
+try:
+    dir = sys.argv[1]
+except IndexError:
+    print("Usage: python3 syn_gen.py output/dir")
+    exit(1)
+
 # Modules and levels commonly seen in Ubuntu Apache error logs
 modules = ["mpm_event", "core", "authz_core", "http2", "ssl"]
 levels = ["notice", "warn", "error"]
@@ -29,7 +35,7 @@ def generate_log_line(timestamp, anomaly=False):
     pid = random.randint(1000, 5000)
     tid = random.randint(100000000000000, 200000000000000)
 
-    if anomaly and random.random() < 0.7:  # ~70% chance to pick anomaly template
+    if anomaly and random.random() < 0.1:  # 10% chance to pick anomaly template
         msg_template = random.choice(anomalies)
         msg = msg_template.format(module=module, pid=pid)
     else:
@@ -43,7 +49,7 @@ def generate_log_line(timestamp, anomaly=False):
     return log_line
 
 
-def generate_log_dataset(n_lines=3000, anomaly_ratio=0.05):
+def generate_log_dataset(n_lines=6000, anomaly_ratio=0.05):
     start_time = datetime(2025, 6, 28)
     lines = []
     for i in range(n_lines):

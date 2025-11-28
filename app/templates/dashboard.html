@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Log Anomaly Dashboard</title>
+    <title>Linux Admin Toolkit Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 </head>
 <body>
     <div class="card">
         <h1>Log Anomaly Detection Dashboard</h1>
         <form method="POST" action="/dashboard">
-            <button type="submit">Run Pipeline</button>
+            <button type="submit" class="button">Run Pipeline</button>
         </form>
     </div>
 
@@ -17,7 +17,7 @@
         <h3>Anomalies Detected ({{ anomalies|length }})</h3>
 
         <div class="filter-container">
-            <input class="filter-input" id="filterInput" type="text" placeholder="Filter by message template...">
+            <input class="filter-input" id="filterInput" type="text" placeholder="Filter by message...">
         </div>
 
         <table id="anomalyTable">
@@ -25,15 +25,15 @@
                 <tr>
                     <th>Timestamp</th>
                     <th>Level</th>
-                    <th>Template</th>
+                    <th>Message</th>
                 </tr>
             </thead>
             <tbody>
                 {% for a in anomalies %}
                 <tr>
                     <td>{{ a.timestamp }}</td>
-                    <td>{{ a.Level }}</td>
-                    <td>{{ a.log_template }}</td>
+                    <td>{{ a.level }}</td>
+                    <td>{{ a.message }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

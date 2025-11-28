@@ -1,7 +1,7 @@
 /* DASHBOARD PAGE */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #5a2ea6, #9d4edd);
+    background: linear-gradient(135deg, #5d2a84, hsl(279, 73%, 75%)); /* darker neutral background */
     margin: 0;
     padding: 40px;
     color: #fff;
@@ -75,4 +75,31 @@ th.sorted-asc::after {
 }
 th.sorted-desc::after {
     content: " ▼";
+}
+
+/* MODERN BUTTON */
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #8e6ec6; /* muted purple accent */
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #a384d1; /* slightly brighter on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
