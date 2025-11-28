@@ -34,12 +34,8 @@ def dis_logs():
             GROUP BY service, source_file
             ORDER BY service, count DESC
         """).fetchall()
-    nested_stats = defaultdict(list)
-    for row in stats:
-        nested_stats[row["service"]].append(row)
-
-    print(nested_stats)
-    return render_template('index.html', logs=logs, stats=nested_stats)
+    print(stats)
+    return render_template('index.html', logs=logs, stats=stats)
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():
