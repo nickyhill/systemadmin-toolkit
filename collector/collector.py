@@ -63,23 +63,23 @@ class Collector:
         count_logs = len(logs)
         self.logger.info(f"Finished collecting System logs... : {len(logs)}")
 
-        # Parse apache logs
-        for name in self.apache_logs:
-            self.logger.info("Beginning to collect Apache logs...")
-            path = os.path.join(self.apache_dir, name)
-            if not os.path.exists(path):
-                self.logger.info(f"Log file does not exist: {path}")
-                continue
-
-            with open(path, "r", encoding="utf-8", errors="ignore") as f:
-                for line in f:
-                    parsed = self._parse_line(line, name)
-                    if parsed:
-                        logs.append(parsed)
-                    else:
-                        continue
-
-        self.logger.info(f"Finished collecting apache logs... : {count_logs - len(logs)}")
+        # # Parse apache logs
+        # for name in self.apache_logs:
+        #     self.logger.info("Beginning to collect Apache logs...")
+        #     path = os.path.join(self.apache_dir, name)
+        #     if not os.path.exists(path):
+        #         self.logger.info(f"Log file does not exist: {path}")
+        #         continue
+        #
+        #     with open(path, "r", encoding="utf-8", errors="ignore") as f:
+        #         for line in f:
+        #             parsed = self._parse_line(line, name)
+        #             if parsed:
+        #                 logs.append(parsed)
+        #             else:
+        #                 continue
+        #
+        # self.logger.info(f"Finished collecting apache logs... : {count_logs - len(logs)}")
 
         return logs
 
