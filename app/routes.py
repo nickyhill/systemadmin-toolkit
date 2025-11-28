@@ -25,7 +25,7 @@ def index():
 
 
 @app.route('/logs')
-def logs():
+def dis_logs():
     logs = storage.query()
     stats = storage.conn.execute("""
             SELECT service, source_file, COUNT(*) AS count

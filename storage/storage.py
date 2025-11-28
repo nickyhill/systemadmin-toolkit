@@ -62,7 +62,7 @@ class Storage:
 
             self.conn.commit()
 
-    def query(self, service=None, limit=10):
+    def query(self, service=None, limit=None):
         """Retrieve recent logs, optionally filtered by service."""
         self.logger.info(f"Querying Service:{service} logs")
         with self._lock:
