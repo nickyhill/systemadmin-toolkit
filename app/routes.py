@@ -14,7 +14,7 @@ logger.warning("A warning message captured by journalctl.")
 storage = Storage("logs.db", "storage/schema.sql", logger=logger)
 
 @app.route('/')
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/dashboard', methods=['GET', 'POST'])
 def index():
     anomalies = None
     if request.method == "POST":
@@ -22,6 +22,7 @@ def index():
         anomalies_df = run_anomaly_pipeline()
         anomalies = anomalies_df[anomalies_df["anomaly"] == True].to_dict(orient="records")
     return render_template("dashboard.html", anomalies=anomalies)
+
 
 @app.route('/logs')
 def logs():
