@@ -7,19 +7,19 @@
 #
 from attr import dataclass
 
-from logai.analysis.anomaly_detector import AnomalyDetectionConfig
-from logai.analysis.nn_anomaly_detector import NNAnomalyDetectionConfig
-from logai.analysis.clustering import ClusteringConfig
-from logai.config_interfaces import Config
-from logai.dataloader.data_loader import DataLoaderConfig
-from logai.dataloader.openset_data_loader import OpenSetDataLoaderConfig
-from logai.information_extraction.categorical_encoder import CategoricalEncoderConfig
-from logai.information_extraction.feature_extractor import FeatureExtractorConfig
-from logai.information_extraction.log_parser import LogParserConfig
-from logai.information_extraction.log_vectorizer import VectorizerConfig
-from logai.preprocess.partitioner import PartitionerConfig
-from logai.preprocess.openset_partitioner import OpenSetPartitionerConfig
-from logai.preprocess.preprocessor import PreprocessorConfig
+from anomaly.logai.analysis.anomaly_detector import AnomalyDetectionConfig
+from anomaly.logai.analysis.nn_anomaly_detector import NNAnomalyDetectionConfig
+from anomaly.logai.analysis.clustering import ClusteringConfig
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.dataloader.data_loader import DataLoaderConfig
+from anomaly.logai.dataloader.openset_data_loader import OpenSetDataLoaderConfig
+from anomaly.logai.information_extraction.categorical_encoder import CategoricalEncoderConfig
+from anomaly.logai.information_extraction.feature_extractor import FeatureExtractorConfig
+from anomaly.logai.information_extraction.log_parser import LogParserConfig
+from anomaly.logai.information_extraction.log_vectorizer import VectorizerConfig
+from anomaly.logai.preprocess.partitioner import PartitionerConfig
+from anomaly.logai.preprocess.openset_partitioner import OpenSetPartitionerConfig
+from anomaly.logai.preprocess.preprocessor import PreprocessorConfig
 
 
 @dataclass

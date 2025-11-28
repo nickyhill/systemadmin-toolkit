@@ -20,11 +20,11 @@ from tokenizers import (
 from transformers import BertTokenizerFast, AutoTokenizer
 from datasets import Dataset as HFDataset
 
-from logai.algorithms.algo_interfaces import VectorizationAlgo
-from logai.config_interfaces import Config
-from logai.dataloader.data_model import LogRecordObject
-from logai.utils import constants
-from logai.algorithms.factory import factory
+from anomaly.logai.algorithms.algo_interfaces import VectorizationAlgo
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.dataloader.data_model import LogRecordObject
+from anomaly.logai.utils import constants
+from anomaly.logai.algorithms.factory import factory
 
 
 @dataclass

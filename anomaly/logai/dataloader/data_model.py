@@ -10,7 +10,7 @@ import pandas as pd
 from dataclasses import dataclass, field
 import pathlib
 import json
-from logai.utils import constants
+from anomaly.logai.utils import constants
 import logging
 
 

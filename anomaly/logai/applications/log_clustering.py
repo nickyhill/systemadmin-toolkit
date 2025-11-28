@@ -7,19 +7,19 @@
 #
 import pandas as pd
 
-from logai.algorithms.clustering_algo.dbscan import DBSCAN
-from logai.algorithms.clustering_algo.kmeans import KMeans
-from logai.analysis.clustering import Clustering
-from logai.applications.application_interfaces import WorkFlowConfig
-from logai.dataloader.data_loader import FileDataLoader
-from logai.dataloader.openset_data_loader import OpenSetDataLoader
-from logai.information_extraction.categorical_encoder import CategoricalEncoder
-from logai.information_extraction.feature_extractor import FeatureExtractor
-from logai.information_extraction.log_parser import LogParser
-from logai.information_extraction.log_vectorizer import LogVectorizer
-from logai.preprocess.preprocessor import Preprocessor
-from logai.utils import constants
-from logai.utils.functions import pad
+from anomaly.logai.algorithms.clustering_algo.dbscan import DBSCAN
+from anomaly.logai.algorithms.clustering_algo.kmeans import KMeans
+from anomaly.logai.analysis.clustering import Clustering
+from anomaly.logai.applications.application_interfaces import WorkFlowConfig
+from anomaly.logai.dataloader.data_loader import FileDataLoader
+from anomaly.logai.dataloader.openset_data_loader import OpenSetDataLoader
+from anomaly.logai.information_extraction.categorical_encoder import CategoricalEncoder
+from anomaly.logai.information_extraction.feature_extractor import FeatureExtractor
+from anomaly.logai.information_extraction.log_parser import LogParser
+from anomaly.logai.information_extraction.log_vectorizer import LogVectorizer
+from anomaly.logai.preprocess.preprocessor import Preprocessor
+from anomaly.logai.utils import constants
+from anomaly.logai.utils.functions import pad
 
 
 class LogClustering:

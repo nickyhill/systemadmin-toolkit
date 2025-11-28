@@ -6,9 +6,9 @@
 #
 #
 from datasets import Dataset as HFDataset
-from logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorizedDataset
-from logai.analysis.anomaly_detector import AnomalyDetectionConfig
-from logai.algorithms.factory import factory
+from anomaly.logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorizedDataset
+from anomaly.logai.analysis.anomaly_detector import AnomalyDetectionConfig
+from anomaly.logai.algorithms.factory import factory
 
 NNAnomalyDetectionConfig = AnomalyDetectionConfig
 

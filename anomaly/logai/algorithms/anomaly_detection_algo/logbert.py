@@ -5,11 +5,11 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
-from logai.algorithms.algo_interfaces import NNAnomalyDetectionAlgo
-from logai.algorithms.nn_model.logbert.configs import LogBERTConfig
-from logai.algorithms.nn_model.logbert.train import LogBERTTrain
-from logai.algorithms.nn_model.logbert.predict import LogBERTPredict
-from logai.algorithms.factory import factory
+from anomaly.logai.algorithms.algo_interfaces import NNAnomalyDetectionAlgo
+from anomaly.logai.algorithms.nn_model.logbert.configs import LogBERTConfig
+from anomaly.logai.algorithms.nn_model.logbert.train import LogBERTTrain
+from anomaly.logai.algorithms.nn_model.logbert.predict import LogBERTPredict
+from anomaly.logai.algorithms.factory import factory
 from datasets import Dataset as HFDataset
 import pandas as pd
 

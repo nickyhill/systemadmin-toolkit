@@ -12,13 +12,13 @@ import pickle as pkl
 import pandas as pd
 from attr import dataclass
 
-from logai.algorithms.algo_interfaces import VectorizationAlgo
+from anomaly.logai.algorithms.algo_interfaces import VectorizationAlgo
 from .semantic import Semantic, SemanticVectorizerParams
 from .sequential import Sequential, SequentialVectorizerParams
-from logai.config_interfaces import Config
-from logai.dataloader.data_model import LogRecordObject
-from logai.utils import constants
-from logai.algorithms.factory import factory
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.dataloader.data_model import LogRecordObject
+from anomaly.logai.utils import constants
+from anomaly.logai.algorithms.factory import factory
 
 
 class ForecastNNVectorizedDataset:

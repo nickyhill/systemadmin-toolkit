@@ -9,21 +9,21 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from logai.analysis.anomaly_detector import AnomalyDetector, AnomalyDetectionConfig
-from logai.applications.application_interfaces import WorkFlowConfig
-from logai.dataloader.data_loader import FileDataLoader
-from logai.dataloader.data_model import LogRecordObject
-from logai.dataloader.openset_data_loader import OpenSetDataLoader
-from logai.information_extraction.categorical_encoder import (
+from anomaly.logai.analysis.anomaly_detector import AnomalyDetector, AnomalyDetectionConfig
+from anomaly.logai.applications.application_interfaces import WorkFlowConfig
+from anomaly.logai.dataloader.data_loader import FileDataLoader
+from anomaly.logai.dataloader.data_model import LogRecordObject
+from anomaly.logai.dataloader.openset_data_loader import OpenSetDataLoader
+from anomaly.logai.information_extraction.categorical_encoder import (
     CategoricalEncoder,
     CategoricalEncoderConfig,
 )
-from logai.information_extraction.feature_extractor import FeatureExtractor
-from logai.information_extraction.log_parser import LogParser
-from logai.information_extraction.log_vectorizer import LogVectorizer
-from logai.preprocess.partitioner import PartitionerConfig, Partitioner
-from logai.preprocess.preprocessor import Preprocessor
-from logai.utils import constants, evaluate
+from anomaly.logai.information_extraction.feature_extractor import FeatureExtractor
+from anomaly.logai.information_extraction.log_parser import LogParser
+from anomaly.logai.information_extraction.log_vectorizer import LogVectorizer
+from anomaly.logai.preprocess.partitioner import PartitionerConfig, Partitioner
+from anomaly.logai.preprocess.preprocessor import Preprocessor
+from anomaly.logai.utils import constants, evaluate
 
 
 class LogAnomalyDetection:

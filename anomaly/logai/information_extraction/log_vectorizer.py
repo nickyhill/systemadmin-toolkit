@@ -8,9 +8,9 @@
 import pandas as pd
 from attr import dataclass
 
-import logai.algorithms.vectorization_algo
-from logai.config_interfaces import Config
-from logai.algorithms.factory import factory
+import anomaly.logai.algorithms.vectorization_algo
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.algorithms.factory import factory
 
 
 @dataclass

@@ -13,11 +13,11 @@ from typing import Tuple, List
 
 from merlion.models.anomaly.dbl import DynamicBaseline, DynamicBaselineConfig
 
-from logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
-from logai.config_interfaces import Config
-from logai.utils import constants
-from logai.utils.functions import pd_to_timeseries
-from logai.algorithms.factory import factory
+from anomaly.logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.utils import constants
+from anomaly.logai.utils.functions import pd_to_timeseries
+from anomaly.logai.algorithms.factory import factory
 
 
 @dataclass

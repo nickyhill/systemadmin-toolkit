@@ -8,7 +8,7 @@
 import abc
 
 import pandas as pd
-from logai.dataloader.data_model import LogRecordObject
+from anomaly.logai.dataloader.data_model import LogRecordObject
 
 
 class ParsingAlgo(abc.ABC):

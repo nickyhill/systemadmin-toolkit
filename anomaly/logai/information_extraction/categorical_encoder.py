@@ -9,16 +9,16 @@
 import pandas as pd
 from attr import dataclass
 
-from logai.algorithms.categorical_encoding_algo.label_encoding import LabelEncoding
-from logai.algorithms.categorical_encoding_algo.one_hot_encoding import (
+from anomaly.logai.algorithms.categorical_encoding_algo.label_encoding import LabelEncoding
+from anomaly.logai.algorithms.categorical_encoding_algo.one_hot_encoding import (
     OneHotEncoding,
     OneHotEncodingParams,
 )
-from logai.algorithms.categorical_encoding_algo.ordinal_encoding import (
+from anomaly.logai.algorithms.categorical_encoding_algo.ordinal_encoding import (
     OrdinalEncoding,
     OrdinalEncodingParams,
 )
-from logai.config_interfaces import Config
+from anomaly.logai.config_interfaces import Config
 from typing import Tuple
 
 

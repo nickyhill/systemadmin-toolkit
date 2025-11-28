@@ -10,7 +10,8 @@ from logai.algorithms.anomaly_detection_algo.one_class_svm import OneClassSVMPar
 
 def run_anomaly_pipeline():
     # 1 Load log data
-    log_file = "/var/log/apache2/error.log"
+    #log_file = "/var/log/apache2/error.log"
+    log_file = "../error.log"
     with open(log_file, "r") as f:
         lines = [line.strip() for line in f if line.strip()]
 

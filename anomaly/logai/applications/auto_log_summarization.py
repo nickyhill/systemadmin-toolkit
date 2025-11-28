@@ -9,13 +9,13 @@ import logging
 
 import pandas as pd
 
-from logai.applications.application_interfaces import WorkFlowConfig
-from logai.dataloader.data_loader import FileDataLoader
-from logai.dataloader.data_model import LogRecordObject
-from logai.dataloader.openset_data_loader import OpenSetDataLoader
-from logai.information_extraction.log_parser import LogParser
-from logai.preprocess.preprocessor import Preprocessor
-from logai.utils import constants
+from anomaly.logai.applications.application_interfaces import WorkFlowConfig
+from anomaly.logai.dataloader.data_loader import FileDataLoader
+from anomaly.logai.dataloader.data_model import LogRecordObject
+from anomaly.logai.dataloader.openset_data_loader import OpenSetDataLoader
+from anomaly.logai.information_extraction.log_parser import LogParser
+from anomaly.logai.preprocess.preprocessor import Preprocessor
+from anomaly.logai.utils import constants
 
 
 class AutoLogSummarization:

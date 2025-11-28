@@ -9,9 +9,9 @@ import numpy as np
 import pandas as pd
 from dataclasses import dataclass, fields, _MISSING_TYPE
 
-from logai.config_interfaces import Config
-from logai.utils import constants
-from logai.utils.functions import pad
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.utils import constants
+from anomaly.logai.utils.functions import pad
 
 
 @dataclass

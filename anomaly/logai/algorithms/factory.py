@@ -5,7 +5,7 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
-from logai.utils.misc import is_torch_available, \
+from anomaly.logai.utils.misc import is_torch_available, \
     is_transformers_available
 
 

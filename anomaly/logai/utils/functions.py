@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 from merlion.utils import TimeSeries
 
-from logai.utils import constants
+from anomaly.logai.utils import constants
 
 
 def pad(x, max_len: np.array, padding_value: int = 0):

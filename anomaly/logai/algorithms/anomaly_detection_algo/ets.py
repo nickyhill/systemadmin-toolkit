@@ -9,17 +9,17 @@ import pandas as pd
 from attr import dataclass
 from datetime import datetime
 
-from logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
-from logai.config_interfaces import Config
-from logai.utils import constants
+from anomaly.logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
+from anomaly.logai.utils import constants
+from anomaly.logai.config_interfaces import Config
 
 from merlion.models.anomaly.forecast_based.ets import (
     ETSDetector as MerlionETSDetector,
     ETSDetectorConfig,
 )
 
-from logai.utils.functions import pd_to_timeseries
-from logai.algorithms.factory import factory
+from anomaly.logai.utils.functions import pd_to_timeseries
+from anomaly.logai.algorithms.factory import factory
 
 
 @dataclass

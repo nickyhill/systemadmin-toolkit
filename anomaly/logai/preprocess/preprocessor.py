@@ -9,8 +9,8 @@ import numpy as np
 import pandas as pd
 from attr import dataclass
 
-from logai.config_interfaces import Config
-from logai.dataloader.data_model import LogRecordObject
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.dataloader.data_model import LogRecordObject
 
 
 @dataclass

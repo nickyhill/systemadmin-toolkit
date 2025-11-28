@@ -10,10 +10,10 @@ from attr import dataclass
 import pickle as pkl
 import os
 
-from logai.algorithms.algo_interfaces import VectorizationAlgo
-from logai.config_interfaces import Config
-from logai.utils.functions import pad
-from logai.algorithms.factory import factory
+from anomaly.logai.algorithms.algo_interfaces import VectorizationAlgo
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.utils.functions import pad
+from anomaly.logai.algorithms.factory import factory
 
 
 @dataclass

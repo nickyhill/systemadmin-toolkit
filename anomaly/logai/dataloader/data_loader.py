@@ -11,9 +11,9 @@ import re
 import pandas as pd
 from attr import dataclass
 
-from logai.config_interfaces import Config
-from logai.dataloader.data_model import LogRecordObject
-from logai.utils import constants
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.dataloader.data_model import LogRecordObject
+from anomaly.logai.utils import constants
 
 
 @dataclass

@@ -11,7 +11,7 @@ from .ets import ETSDetector
 from .isolation_forest import IsolationForestDetector
 from .local_outlier_factor import LOFDetector
 from .one_class_svm import OneClassSVMDetector
-from logai.utils.misc import is_torch_available, \
+from anomaly.logai.utils.misc import is_torch_available, \
     is_transformers_available
 
 _MODULES = [

@@ -13,7 +13,7 @@ import itertools
 import re
 import string
 
-from logai.utils import constants
+from anomaly.logai.utils import constants
 
 
 def replace_delimeters(logline, delimeter_regex):

@@ -5,25 +5,25 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
-from logai.utils import constants
+from anomaly.logai.utils import constants
 from attr import dataclass
-from logai.dataloader.data_loader import FileDataLoader
-from logai.dataloader.data_model import LogRecordObject
-from logai.utils.dataset_utils import split_train_dev_test_for_anomaly_detection
-from logai.information_extraction.log_parser import LogParser
-from logai.preprocess.openset_partitioner import OpenSetPartitioner
-from logai.applications.application_interfaces import WorkFlowConfig
-from logai.utils.file_utils import *
-from logai.preprocess.hdfs_preprocessor import HDFSPreprocessor
-from logai.preprocess.bgl_preprocessor import BGLPreprocessor
-from logai.preprocess.thunderbird_preprocessor import ThunderbirdPreprocessor
-from logai.analysis.nn_anomaly_detector import NNAnomalyDetector
-from logai.information_extraction.log_vectorizer import LogVectorizer
+from anomaly.logai.dataloader.data_loader import FileDataLoader
+from anomaly.logai.dataloader.data_model import LogRecordObject
+from anomaly.logai.utils.dataset_utils import split_train_dev_test_for_anomaly_detection
+from anomaly.logai.information_extraction.log_parser import LogParser
+from anomaly.logai.preprocess.openset_partitioner import OpenSetPartitioner
+from anomaly.logai.applications.application_interfaces import WorkFlowConfig
+from anomaly.logai.utils.file_utils import *
+from anomaly.logai.preprocess.hdfs_preprocessor import HDFSPreprocessor
+from anomaly.logai.preprocess.bgl_preprocessor import BGLPreprocessor
+from anomaly.logai.preprocess.thunderbird_preprocessor import ThunderbirdPreprocessor
+from anomaly.logai.analysis.nn_anomaly_detector import NNAnomalyDetector
+from anomaly.logai.information_extraction.log_vectorizer import LogVectorizer
 from .configs.schema import config_schema
 import logging
 from schema import SchemaError
 
-from logai.information_extraction.feature_extractor import (
+from anomaly.logai.information_extraction.feature_extractor import (
     FeatureExtractor,
     FeatureExtractorConfig,
 )

@@ -10,9 +10,9 @@ import pandas as pd
 from attr import dataclass
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from logai.algorithms.algo_interfaces import VectorizationAlgo
-from logai.config_interfaces import Config
-from logai.algorithms.factory import factory
+from anomaly.logai.algorithms.algo_interfaces import VectorizationAlgo
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.algorithms.factory import factory
 
 
 @dataclass

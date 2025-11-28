@@ -5,8 +5,8 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
-from logai.analysis.anomaly_detector import AnomalyDetector, AnomalyDetectionConfig
-from logai.utils import constants
+from anomaly.logai.analysis.anomaly_detector import AnomalyDetector, AnomalyDetectionConfig
+from anomaly.logai.utils import constants
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np

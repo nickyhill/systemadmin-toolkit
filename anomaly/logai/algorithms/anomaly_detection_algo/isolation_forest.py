@@ -10,9 +10,9 @@ from attr import dataclass
 
 from sklearn.ensemble import IsolationForest
 
-from logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
-from logai.config_interfaces import Config
-from logai.algorithms.factory import factory
+from anomaly.logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
+from anomaly.logai.config_interfaces import Config
+from anomaly.logai.algorithms.factory import factory
 
 
 @dataclass

@@ -10,7 +10,7 @@ from .semantic import Semantic
 from .sequential import Sequential
 from .tfidf import TfIdf
 from .word2vec import Word2Vec
-from logai.utils.misc import is_torch_available, \
+from anomaly.logai.utils.misc import is_torch_available, \
     is_transformers_available
 
 _MODULES = [

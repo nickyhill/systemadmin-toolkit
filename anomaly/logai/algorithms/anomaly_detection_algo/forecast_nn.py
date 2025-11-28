@@ -5,16 +5,16 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
-from logai.algorithms.algo_interfaces import NNAnomalyDetectionAlgo
-from logai.algorithms.nn_model.forecast_nn.base_nn import ForecastBasedNNParams
-from logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorizedDataset
-from logai.algorithms.nn_model.forecast_nn.lstm import LSTM, LSTMParams
-from logai.algorithms.nn_model.forecast_nn.cnn import CNN, CNNParams
-from logai.algorithms.nn_model.forecast_nn.transformer import (
+from anomaly.logai.algorithms.algo_interfaces import NNAnomalyDetectionAlgo
+from anomaly.logai.algorithms.nn_model.forecast_nn.base_nn import ForecastBasedNNParams
+from anomaly.logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorizedDataset
+from anomaly.logai.algorithms.nn_model.forecast_nn.lstm import LSTM, LSTMParams
+from anomaly.logai.algorithms.nn_model.forecast_nn.cnn import CNN, CNNParams
+from anomaly.logai.algorithms.nn_model.forecast_nn.transformer import (
     Transformer,
     TransformerParams,
 )
-from logai.algorithms.factory import factory
+from anomaly.logai.algorithms.factory import factory
 from torch.utils.data import DataLoader
 
 
