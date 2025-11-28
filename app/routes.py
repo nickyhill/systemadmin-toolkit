@@ -37,7 +37,7 @@ def dis_logs():
         """).fetchall()
     for row in stats:
         # If you get row as a string
-        service, source_file, count = row[0].split('|')
+        service, source_file, count = row
         count = int(count)
 
         if service not in parsed_stats:

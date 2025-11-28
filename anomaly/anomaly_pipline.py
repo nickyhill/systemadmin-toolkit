@@ -11,6 +11,7 @@ from anomaly.logai.algorithms.anomaly_detection_algo.isolation_forest import Iso
 
 def run_anomaly_pipeline():
     # 1 Load log data
+    # Point this towards the error log file
     #log_file = "/var/log/apache2/error.log"
     log_file = "error.log" # DEBUG DIR
     with open(log_file, "r") as f:
@@ -23,7 +24,7 @@ def run_anomaly_pipeline():
     preprocessor = Preprocessor(PreprocessorConfig(custom_delimiters_regex=[]))
     df["Content"], _ = preprocessor.clean_log(df["Content"])
 
-
+    # 3 Parse fields
     def extract_fields(logline):
         """
         Extract timestamp, module, level, pid, tid, and message
