@@ -27,7 +27,7 @@ def index():
 
 @app.route('/logs')
 def dis_logs():
-    storage.conn.row_factory = lambda cursor, row: {col[0]: row[idx] for idx, col in enumerate(cursor.description)}
+    parsed_stats = {}
     logs = storage.query()
     stats = storage.conn.execute("""
             SELECT service, source_file, COUNT(*) AS count
@@ -35,8 +35,19 @@ def dis_logs():
             GROUP BY service, source_file
             ORDER BY service, count DESC
         """).fetchall()
-    print()
-    return render_template('index.html', logs=logs, stats=stats)
+    for row in stats:
+        # If you get row as a string
+        service, source_file, count = row[0].split('|')
+        count = int(count)
+
+        if service not in parsed_stats:
+            parsed_stats[service] = []
+        parsed_stats[service].append({
+            "source_file": source_file,
+            "count": count
+        })
+    print(stats)
+    return render_template('index.html', logs=logs, stats=parsed_stats)
 
 @app.route("/api/logs", methods=["GET"])
 def get_logs():

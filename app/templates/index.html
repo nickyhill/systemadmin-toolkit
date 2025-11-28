@@ -14,7 +14,7 @@
 
         {% if stats %}
             <ul>
-            {% for service, files in stats %}
+            {% for service, files in stats.items() %}
                 <li><strong>{{ service }}</strong>
                     <ul>
                     {% for row in files %}
