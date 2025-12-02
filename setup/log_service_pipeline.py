@@ -10,8 +10,6 @@ def main():
     # Set up logging for backend
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
     logger = logging.getLogger(__name__)
-    logger.info("This message will go to stdout and be captured by journalctl.")
-    logger.warning("A warning message captured by journalctl.")
 
     storage = Storage("logs.db", "storage/schema.sql", logger=logger)
     pipeline = LogPipeline(storage)

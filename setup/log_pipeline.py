@@ -10,7 +10,6 @@ class LogPipeline:
         self.collector = Collector(logger=self.logger)
 
     def run_pipeline_once(self) -> None:
-        """Collect logs, parse, and store."""
         self.logger.info("Collecting logs...")
         raw_logs = self.collector.collect()  # collect new logs each time
         if not raw_logs:

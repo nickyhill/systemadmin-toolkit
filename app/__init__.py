@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_cors import CORS
-from storage.storage import Storage
 
 app = Flask(__name__)
 CORS(app)

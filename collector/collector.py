@@ -22,24 +22,26 @@ class Collector:
             re.VERBOSE,
         )
 
-        ## access.log and error.log regex format
-        # Matches: timestamp, hostname, service, message
-        self.LOG_REGEX_APACHE = re.compile(
-            r"""^(?P<ip>\S+)\s
-                        \[(?P<ts>[^\]]+)\]\s
-                        "(?P<method>\S+)\s
-                        (?P<msg>.+)"$""",
-            re.VERBOSE,
-        )
+        ## Struggled Basic apache regex matches however did not have enough time to test them
 
-        self.LOG_REGEX_APACHE_ERROR = re.compile(
-            r"""^(?P<ts>\[[^\]]+\])\s
-                        (?P<error>\[[^\]]+\])
-                        (?:\s+(?P<pid>\[pid\s\d+(?::tid\s\d+)?\]))?
-                        \s(?P<ip>\[client\s[\d\.]+\])
-                        \s(?P<msg>.+)$""",
-            re.VERBOSE,
-        )
+        # ## access.log and error.log regex format
+        # # Matches: timestamp, hostname, service, message
+        # self.LOG_REGEX_APACHE = re.compile(
+        #     r"""^(?P<ip>\S+)\s
+        #                 \[(?P<ts>[^\]]+)\]\s
+        #                 "(?P<method>\S+)\s
+        #                 (?P<msg>.+)"$""",
+        #     re.VERBOSE,
+        # )
+        #
+        # self.LOG_REGEX_APACHE_ERROR = re.compile(
+        #     r"""^(?P<ts>\[[^\]]+\])\s
+        #                 (?P<error>\[[^\]]+\])
+        #                 (?:\s+(?P<pid>\[pid\s\d+(?::tid\s\d+)?\]))?
+        #                 \s(?P<ip>\[client\s[\d\.]+\])
+        #                 \s(?P<msg>.+)$""",
+        #     re.VERBOSE,
+        # )
 
     def collect(self) -> list[dict]:
         logs = []

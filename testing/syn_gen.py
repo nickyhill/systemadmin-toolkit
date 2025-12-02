@@ -60,7 +60,7 @@ def generate_log_dataset(n_lines=6000, anomaly_ratio=0.05):
     return pd.DataFrame(lines)
 
 
-# Example usageS
+# Usage
 df_logs = generate_log_dataset()
 print(df_logs.head())
 path = (sys.argv[1] + "/error.log")

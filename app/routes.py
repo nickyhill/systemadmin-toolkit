@@ -1,5 +1,4 @@
 import logging
-from collections import defaultdict
 from flask import jsonify, request, render_template
 from app import app
 from storage.storage import Storage

@@ -75,6 +75,17 @@ pip install -r requirements.txt
 8. Train anomaly detector using Isolation Forest 
 9. Predict anomalies
 
+### Testing
+
+Located in the testing module there are three files:
+
+- syn_gen.py : generates 6000 apache2 error logs
+- test_anomaly : tests the anomaly pipeline
+- test_collector : tests the system log pipeline
+
+Example run, be at the root of the repo in the venv and then run ```python -m testing.test_anomaly```
+
+
 ---
 
 ## 4. Results 📊
