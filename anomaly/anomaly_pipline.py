@@ -121,31 +121,3 @@ def run_anomaly_pipeline():
 
     print("Number of anomalies detected:", anomalies_bool.sum())
     return result_df
-
-
-    # # 8 Train anomaly detector
-    # scaler = StandardScaler()
-    # feature_vector_scaled = pd.DataFrame(
-    #     scaler.fit_transform(feature_vector_numeric),
-    #     columns=feature_vector_numeric.columns,
-    #     index=feature_vector_numeric.index
-    # )
-    #
-    # algo_params = OneClassSVMParams(nu=0.5, kernel="rbf")
-    # anomaly_detector = AnomalyDetector(
-    #     AnomalyDetectionConfig(algo_name="one_class_svm", algo_params=algo_params)
-    # )
-    # anomaly_detector.fit(feature_vector_scaled)
-    #
-    # # 9 Predict anomalies
-    # anomalies = anomaly_detector.predict(feature_vector_scaled)
-    # # Ensure anomalies are boolean
-    # anomalies_bool = anomalies["anom_score"].astype(bool)
-    # # Add anomaly column to your parsed logs
-    # result_df = parsed_loglines.copy()
-    # result_df["anomaly"] = anomalies_bool
-    #
-    # print("Number of anomalies detected:", anomalies_bool.sum())
-    #
-    # # ✅ Return the DataFrame so your dashboard can display it
-    # return result_df
